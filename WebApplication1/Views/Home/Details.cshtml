@@ -1,0 +1,81 @@
+﻿@model Data.Entity.Film
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Film</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.opening_crawl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.opening_crawl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.director)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.director)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.producer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.producer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.created)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.edited)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.edited)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.releasedate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.releasedate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
