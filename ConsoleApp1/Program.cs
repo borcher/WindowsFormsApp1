@@ -24,7 +24,7 @@ namespace ConsoleApp1
             IntPtr h = Process.GetCurrentProcess().MainWindowHandle;
             ShowWindow(h, 0);
             Program pr = new Program();
-            pr.start();
+            pr.start(); 
         }
 
        
