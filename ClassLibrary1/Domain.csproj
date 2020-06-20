@@ -54,7 +54,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dao\FilmDao.cs" />
+    <Compile Include="Dao\Objects\FilmDao.cs" />
+    <Compile Include="Dao\Interfaces\IFilmDao.cs" />
     <Compile Include="Objects\Interfaces\IFilm.cs" />
     <Compile Include="Mapper\CustomMapper.cs" />
     <Compile Include="Objects\Classes\Films.cs" />

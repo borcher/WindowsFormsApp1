@@ -1,5 +1,5 @@
 ﻿using Data.Entity;
-using Domain.Dao;
+using Domain.Objects.Dao;
 using System;
 using System.Collections.Generic;
 using System.Linq;
