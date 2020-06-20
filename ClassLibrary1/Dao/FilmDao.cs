@@ -1,5 +1,5 @@
 ﻿using ClassLibrary1.Mapper;
-using ClassLibrary1.Objects;
+using ClassLibrary1.Objects.Classes;
 using Data.DataAccesExternal;
 using Data.Entity;
 using Newtonsoft.Json.Linq;
@@ -15,17 +15,16 @@ namespace Domain.Dao
         private ExternalData _dataAcces=new ExternalData();
         private CustomMapper<Films> _customMapper = new CustomMapper<Films>();
 
-
-
         public List<Film> GetResults(String Title)
         {
             using (StarWarsEntities1 ent = new StarWarsEntities1())
             {
-                var List= ent.Film.Where(x => x.Title == Title).ToList();
+                var List= ent.Film.Where(x => x.Title.ToLower().Contains(Title.ToLower())).ToList();
                 if (List.Count > 0)
                 {
                     foreach(var it in List){
                         var film = ent.Film.Where(x => x.Id == it.Id).FirstOrDefault();
+                        film.edited = DateTime.Now;
                         film.visited = true;
                         
                     }
@@ -48,7 +47,7 @@ namespace Domain.Dao
         {
             using (StarWarsEntities1 ent = new StarWarsEntities1())
             {
-                return ent.Film.Where(x => x.visited).ToList();
+                return ent.Film.Where(x => x.visited).OrderByDescending(x=>x.edited).Take(2).ToList();
             }
         }
 
@@ -74,6 +73,8 @@ namespace Domain.Dao
                                 film.url = item.url;
                                 film.Title = item.title;
                                 film.edited = DateTime.Now;
+                                film.releasedate = DateTime.Parse(item.release_date.Replace('-', '/'));
+                                film.visited = false;
                             }
                             else
                             {
@@ -86,8 +87,8 @@ namespace Domain.Dao
                                     url = item.url,
                                     Title = item.title,
                                     created = DateTime.Now,
-                                    edited = DateTime.Now
-
+                                    edited = DateTime.Now,
+                                    releasedate = DateTime.Parse(item.release_date.Replace('-', '/'))
                                 });
                             }
 
