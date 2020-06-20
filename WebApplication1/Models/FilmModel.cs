@@ -1,4 +1,5 @@
-﻿using Data.Entity;
+﻿using ClassLibrary1.Dao.Interfaces;
+using Data.Entity;
 using Domain.Objects.Dao;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace WebApplication1.Models
 {
     public class FilmModel
     {
-        private FilmDao dao = new FilmDao();
+        private IFilmDao dao = new FilmDao();
         internal List<Film> GetSearchResults(string film)
         {
             if (!string.IsNullOrEmpty(film))

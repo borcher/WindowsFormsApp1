@@ -8,13 +8,14 @@ using Domain;
 using Domain.Objects.Dao;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
+using ClassLibrary1.Dao.Interfaces;
 
 namespace ConsoleApp1
 {
     class Program
     {
         private Timer timer = new Timer();
-
+        private IFilmDao dao = new FilmDao();
         [DllImport("user32.dll")]
         static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
@@ -29,9 +30,6 @@ namespace ConsoleApp1
        
         private void start()
         {
-            FilmDao dao = new FilmDao();
-            dao.UpdateData();
-
             timer.Enabled = true;
             timer.Interval = 3600000;
             timer.Elapsed += ChekcUpdate;
@@ -41,12 +39,9 @@ namespace ConsoleApp1
         }
         private void ChekcUpdate(object sender, ElapsedEventArgs e)
         {
-
-            FilmDao dao = new FilmDao();
             timer.Stop();
             dao.UpdateData();
             timer.Start();
-
         }
     }
 }
